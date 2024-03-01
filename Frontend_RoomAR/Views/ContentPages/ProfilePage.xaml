@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_RoomAR.Views.ContentPages.ProfilePage"
+             Background="#F5F5F5"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="256"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackLayout>
+                <Border HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        WidthRequest="128"
+                        HeightRequest="128"
+                        Margin="32"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 64">
+                    <Image Source="profile_icon.png"
+                           Aspect="Fill"></Image>
+                </Border>
+                <StackLayout HorizontalOptions="Center"
+                             Spacing="8"
+                             Orientation="Horizontal">
+                    <Label FontSize="28">Кристина</Label>
+                    <Label FontSize="28">Бычкова</Label>
+                </StackLayout>
+                <Label FontSize="20"
+                       TextColor="Gray"
+                       HorizontalOptions="Center">Пользователь</Label>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="2">
+            <VerticalStackLayout Margin="16"
+                                 Spacing="16">
+                <Label FontSize="20">Личные данные</Label>
+                <HorizontalStackLayout Spacing="16">
+                    <VerticalStackLayout Spacing="10">
+                        <Label TextColor="Gray">Email</Label>
+                        <Label TextColor="Gray">Номер телефона</Label>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="10">
+                        <Label>testemail@email.com</Label>
+                        <Label>7 999 999 99 99</Label>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Button VerticalOptions="End"
+                    HorizontalOptions="Center"
+                    Text="Выйти из аккаунта"
+                    Margin="16"
+                    x:Name="leaveBtn"
+                    Clicked="leaveBtn_Clicked"
+                    BackgroundColor="DarkRed"></Button>
+        </Grid>
+    </Grid>
+</ContentPage>

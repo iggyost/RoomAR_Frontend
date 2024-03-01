@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_RoomAR.Views.ContentPages.RegistrationPage"
+             Title=""
+             Shell.FlyoutItemIsVisible="False"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="144"></RowDefinition>
+            <RowDefinition Height="16"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout HorizontalOptions="Center"
+                               Spacing="8">
+            <Image Source="chair_logo_icon.png"
+                   WidthRequest="64"
+                   HeightRequest="64"
+                   Aspect="AspectFill"></Image>
+            <Rectangle HeightRequest="64"
+                       WidthRequest="4"
+                       Background="Black"
+                       RadiusX="40"
+                       RadiusY="40">
+            </Rectangle>
+            <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                <Label Text="ROOMAR"
+                       FontFamily="Inter-SemiBold"
+                       FontSize="32"></Label>
+                <Label TextColor="Gray"
+                       FontFamily="Inter-SemiBold"
+                       CharacterSpacing="4">выбор мебели</Label>
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="16"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="1"
+                        WidthRequest="320"
+                        HorizontalOptions="Center"
+                        Margin="16">
+
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Grid.Row="1"
+                                 WidthRequest="320">
+                <!--Номер телефона-->
+                <Label FontSize="16"
+                       FontFamily="Inter-SemiBold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">Введите номер телефона*</Label>
+                <Entry Placeholder="+7 999 999 99 99"
+                       x:Name="phoneEntry"
+                       TextChanged="phoneEntry_TextChanged"
+                       Completed="phoneEntry_Completed"
+                       Keyboard="Numeric"
+                       ReturnType="Next"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"></Entry>
+                <Label FontSize="16"
+                       TextColor="Red"
+                       x:Name="errorPhoneLabel"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"></Label>
+                <!--Имя пользователя-->
+                <Label FontSize="16"
+                       FontFamily="Inter-SemiBold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">Введите имя*</Label>
+                <Entry Placeholder="Имя пользователя"
+                       x:Name="nameEntry"
+                       Completed="nameEntry_Completed"
+                       TextChanged="nameEntry_TextChanged"
+                       ReturnType="Next"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"></Entry>
+                <Label FontSize="16"
+                       TextColor="Red"
+                       x:Name="errorNameLabel"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"></Label>
+                <!--Фамилия пользователя-->
+                <Label FontSize="16"
+                       FontFamily="Inter-SemiBold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">Введите фамилию*</Label>
+                <Entry Placeholder="Фамилия пользователя"
+                       x:Name="surnameEntry"
+                       Completed="surnameEntry_Completed"
+                       TextChanged="surnameEntry_TextChanged"
+                       ReturnType="Next"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"></Entry>
+                <Label FontSize="16"
+                       TextColor="Red"
+                       x:Name="errorSurnameLabel"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"></Label>
+                <!--email пользователя-->
+                <Label FontSize="16"
+                       FontFamily="Inter-SemiBold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">Введите email</Label>
+                <Entry Placeholder="Email"
+                       x:Name="emailEntry"
+                       Completed="emailEntry_Completed"
+                       TextChanged="emailEntry_TextChanged"
+                       ReturnType="Next"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"></Entry>
+                <Label FontSize="16"
+                       TextColor="Red"
+                       x:Name="errorEmailLabel"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"></Label>
+                <!--пароль пользователя-->
+                <Label FontSize="16"
+                       FontFamily="Inter-SemiBold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">Введите пароль*</Label>
+                <Entry Placeholder="Пароль"
+                       x:Name="passwordEntry"
+                       Completed="passwordEntry_Completed"
+                       TextChanged="passwordEntry_TextChanged"
+                       IsPassword="True"
+                       ReturnType="Next"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"></Entry>
+                <Entry Placeholder="Подтвердите пароль"
+                       x:Name="passwordCompleteEntry"
+                       Completed="passwordCompleteEntry_Completed"
+                       TextChanged="passwordCompleteEntry_TextChanged"
+                       IsPassword="True"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"></Entry>
+                <Label FontSize="16"
+                       TextColor="Red"
+                       x:Name="errorPasswordLabel"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"></Label>
+                
+                <Label FontSize="16"
+                       TextColor="Gray"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Margin="64">* - обязательные поля</Label>
+            </VerticalStackLayout>
+            </ScrollView>
+                <Button Text="Регистрация"
+                        Margin="16"
+                        FontSize="16"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        HeightRequest="48"
+                        WidthRequest="144"
+                        x:Name="regBtn"
+                        Grid.Row="1"
+                        Background="Black"
+                        Clicked="regBtn_Clicked"></Button>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_RoomAR.Views.ContentPages.FurniturePage"
+             xmlns:local="clr-namespace:Frontend_RoomAR"
+             Title="FurniturePage"
+             Loaded="ContentPage_Loaded">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="48"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--Контент-->
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--Главное фото 1-->
+                    <RowDefinition Height="344"></RowDefinition>
+                    <!--Дополнительные фото 2-->
+                    <RowDefinition Height="96"></RowDefinition>
+                    <!--Контент 3-->
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--1-->
+                <Border Background="White"
+                        ZIndex="1"
+                        WidthRequest="52"
+                        HeightRequest="52"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 10"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End"
+                        Margin="24,16">
+                    <Border.Shadow>
+                        <Shadow Opacity="0.3"
+                                Radius="12"
+                                Offset="-6,6"></Shadow>
+                    </Border.Shadow>
+                    <ImageButton Source="augmented_reality_icon.png"
+                                 x:Name="augmentedRealityBtn"
+                                 Clicked="augmentedRealityBtn_Clicked"
+                                 WidthRequest="42"
+                                 HeightRequest="42"
+                                 ZIndex="1">
+                    </ImageButton>
+                </Border>
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20">
+                    <Image Aspect="AspectFit"
+                           Source="{Binding CoverPhoto}"
+                           Background="#F5F5F5"
+                           x:Name="mainPhoto"
+                           Margin="8"></Image>
+                </Border>
+                <!--2-->
+                <CollectionView x:Name="furnitureImagesCv"
+                                Grid.Row="1"
+                                Margin="8">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="8">
+                        </LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10"
+                                    Background="#F5F5F5">
+                                <Border.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,0"
+                                            Radius="50"
+                                            Opacity="0.2"></Shadow>
+                                </Border.Shadow>
+                                <ImageButton Source="{Binding Photo1}"
+                                             x:Name="secondaryPhoto"
+                                             AutomationId="{Binding PhotoId}"
+                                             Clicked="secondaryPhoto_Clicked"
+                                             Aspect="AspectFit"
+                                             Margin="8"
+                                             WidthRequest="64"
+                                             HeightRequest="64"></ImageButton>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--3-->
+                <StackLayout Grid.Row="2">
+                    <Label Text="{Binding Name}"
+                           x:Name="nameLbl"
+                           FontFamily="Inter-SemiBold"
+                           FontSize="24"></Label>
+                    <Label Text="{Binding Cost}"
+                           x:Name="costLbl"
+                           FontFamily="Inter-SemiBold"
+                           FontSize="24"></Label>
+                    <Label Text="Описание"
+                           FontSize="20"
+                           FontFamily="Inter-Medium"
+                           Margin="0,8,0,0"></Label>
+                    <Label Text="{Binding Description}"
+                           x:Name="descriptionLbl"
+                           Margin="0,8"
+                           FontSize="16"></Label>
+
+                    <!--Размеры-->
+                    <Label Text="Размеры"
+                           Margin="0,8,0,0"
+                           FontSize="20"
+                           FontFamily="Inter-Medium"></Label>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="96">
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="10"
+                                     Margin="0,8">
+                            <Label Text="Длина:"
+                                   TextColor="Gray"></Label>
+                            <Label Text="Ширина:"
+                                   TextColor="Gray"></Label>
+                            <Label Text="Высота:"
+                                   TextColor="Gray"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="10"
+                                     Margin="0,8">
+                            <Label Text="{Binding Length}"
+                                   x:Name="lengthLbl"></Label>
+                            <Label Text="{Binding Width}"
+                                   x:Name="widthLbl"></Label>
+                            <Label Text="{Binding Height}"
+                                   x:Name="heightLbl"></Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--Параметры-->
+                    <Label Text="Параметры"
+                           Margin="0,8,0,0"
+                           FontSize="20"
+                           FontFamily="Inter-Medium"></Label>
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="16"
+                                 Margin="0,0,0,32">
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="10"
+                                     Margin="0,8">
+                            <Label Text="Вес:"
+                                   TextColor="Gray"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="10"
+                                     Margin="0,8">
+                            <Label Text="{Binding Weight}"
+                                   x:Name="weightLbl"></Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+        <ImageButton HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="4,16"
+                     Source="close_icon.png"
+                     x:Name="backBtn"
+                     Clicked="backBtn_Clicked"
+                     WidthRequest="48"
+                     HeightRequest="48"
+                     Aspect="AspectFill"
+                     ZIndex="1">
+            <ImageButton.Shadow>
+                <Shadow Opacity="0.2"
+                        Radius="6"
+                        Offset="-6,8"></Shadow>
+            </ImageButton.Shadow>
+        </ImageButton>
+        <!--Добавление в корзину-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                <ColumnDefinition Width="16"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Text="В КОРЗИНУ"
+                    CharacterSpacing="2"
+                    FontFamily="Inter-Bold"
+                    Background="Black"
+                    x:Name="addToCartBtn"
+                    Clicked="addToCartBtn_Clicked"></Button>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="48"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Text="-"
+                        FontSize="16"
+                        FontFamily="Inter-Bold"
+                        Background="Black"
+                        x:Name="decreaseBtn"
+                        Clicked="decreaseBtn_Clicked"></Button>
+                <Label Grid.Column="1"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       FontSize="20"
+                       FontFamily="Inter-SemiBold"
+                       x:Name="countLabel">0</Label>
+                <Button Grid.Column="2"
+                        Text="+"
+                        FontFamily="Inter-Bold"
+                        FontSize="16"
+                        Background="Black"
+                        x:Name="increaseBtn"
+                        Clicked="increaseBtn_Clicked"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Frontend_RoomAR.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Frontend_RoomAR.Views.ContentPages"
+    Title="">
+
+    <ShellItem>
+        <ShellContent ContentTemplate="{DataTemplate local:AuthenticationPage}"
+                      Route="Auth"></ShellContent>
+    </ShellItem>
+
+    <Shell.Items>
+        <TabBar>
+            <Tab Icon="home_icon.png"
+                 Title="Главная">
+                <ShellContent ContentTemplate="{DataTemplate local:HomePage}"
+                              Route="Home"
+                              Icon="home_icon.png"></ShellContent>
+            </Tab>
+            <Tab Icon="cart_icon.png"
+                 Title="Корзина">
+                <ShellContent ContentTemplate="{DataTemplate local:CartPage}"
+                              Route="Cart"
+                              Icon="cart_icon.png"></ShellContent>
+            </Tab>
+            <Tab Icon="profile_icon.png"
+                 Title="Профиль">
+                <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}"
+                              Route="Profile"
+                              Icon="profile_icon.png"></ShellContent>
+            </Tab>
+        </TabBar>
+    </Shell.Items>
+
+</Shell>

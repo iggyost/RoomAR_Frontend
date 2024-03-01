@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_RoomAR.Views.ContentPages.HomePage"
+             Background="#F5F5F5"
+             Title=""
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutItemIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="96"></RowDefinition>
+            <RowDefinition Height="48"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="24"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="64"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   TextColor="Black"
+                   Grid.Column="1"
+                   FontSize="32">Мебель</Label>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="48"></ColumnDefinition>
+                <ColumnDefinition Width="16"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Margin="16,0"
+                    Background="White"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 10">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="-10,20"
+                            Radius="20"
+                            Opacity="0.1"></Shadow>
+                </Border.Shadow>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border HorizontalOptions="EndAndExpand"
+                            WidthRequest="48"
+                            StrokeThickness="0"
+                            Background="White">
+                        <Image WidthRequest="24"
+                               HeightRequest="24"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Source="search_icon.png"></Image>
+                    </Border>
+                    <Entry x:Name="searchField"
+                           Grid.Column="1"
+                           VerticalOptions="Center"
+                           FontSize="18"
+                           Margin="0,0,16,0"
+                           TextColor="Black"
+                           Placeholder="Поиск мебели"
+                           ClearButtonVisibility="WhileEditing"
+                           Completed="searchField_Completed"></Entry>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1"
+                    StrokeThickness="0"
+                    Background="White"
+                    StrokeShape="RoundRectangle 10">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="-10,20"
+                            Radius="20"
+                            Opacity="0.1"></Shadow>
+                </Border.Shadow>
+                <ImageButton Source="filter_icon.png"
+                             WidthRequest="32"
+                             HeightRequest="32"></ImageButton>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <ScrollView Orientation="Vertical">
+                <VerticalStackLayout Margin="24">
+                    <Label FontSize="32"
+                           Margin="0,24">Категории</Label>
+                    <!--Список категорий-->
+                    <CollectionView x:Name="categoriesCv"
+                                    Loaded="categoriesCv_Loaded"
+                                    HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="16"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <RadioButton Content="{Binding Name}"
+                                             AutomationId="{Binding CategoryId}"
+                                             Style="{StaticResource categories_style}"
+                                             x:Name="categoryRb"
+                                             CheckedChanged="categoryRb_CheckedChanged"></RadioButton>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--Список мебели-->
+                    <CollectionView x:Name="furnituresCv"
+                                    Loaded="furnituresCv_Loaded"
+                                    WidthRequest="344"
+                                    Margin="0,24">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"
+                                             Span="2"
+                                             HorizontalItemSpacing="16"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border WidthRequest="176"
+                                        HeightRequest="272"
+                                        StrokeThickness="0"
+                                        Background="Transparent"
+                                        AutomationId="{Binding FurnitureId}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FurnitureItemGesture_Tapped"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition Height="100"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Image Aspect="AspectFit"
+                                               Source="{Binding CoverPhoto}"></Image>
+                                        <StackLayout Orientation="Vertical"
+                                                     Margin="12"
+                                                     Grid.Row="1">
+                                            <Label FontSize="16"
+                                                   Text="{Binding Name}"
+                                                   LineBreakMode="TailTruncation"></Label>
+                                            <Label TextColor="Gray"
+                                                   FontSize="14"
+                                                   Text="{Binding Cost, StringFormat='{}{0:### ###} руб.'}"></Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

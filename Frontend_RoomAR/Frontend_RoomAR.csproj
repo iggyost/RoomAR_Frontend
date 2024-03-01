@@ -1,0 +1,128 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Frontend_RoomAR</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>Frontend_RoomAR</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.frontend_roomar</ApplicationId>
+		<ApplicationIdGuid>b02d648f-05df-4767-96ee-6b0503d82f31</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Inter-Black.ttf" />
+	  <None Remove="Resources\Fonts\Inter-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Inter-ExtraBold.ttf" />
+	  <None Remove="Resources\Fonts\Inter-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Inter-Light.ttf" />
+	  <None Remove="Resources\Fonts\Inter-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Inter-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Inter-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Inter-Thin.ttf" />
+	  <None Remove="Resources\Images\augmented_reality_icon.png" />
+	  <None Remove="Resources\Images\cart_icon.png" />
+	  <None Remove="Resources\Images\chair_design1.jpg" />
+	  <None Remove="Resources\Images\chair_logo_icon.png" />
+	  <None Remove="Resources\Images\chair_wooden1.jpg" />
+	  <None Remove="Resources\Images\close_icon.png" />
+	  <None Remove="Resources\Images\filter_icon.png" />
+	  <None Remove="Resources\Images\home_icon.png" />
+	  <None Remove="Resources\Images\left_arrow_icon.png" />
+	  <None Remove="Resources\Images\minus_icon.png" />
+	  <None Remove="Resources\Images\plus_icon.png" />
+	  <None Remove="Resources\Images\profile_icon.png" />
+	  <None Remove="Resources\Images\search_icon.png" />
+	  <None Remove="Resources\Images\sofa1.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\ContentPages\WelcomePage.xaml.cs">
+	    <DependentUpon>WelcomePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\ContentPages\AuthenticationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\CartPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\FurniturePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\ModelViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\PasswordPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\RegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\WelcomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\ContentViews\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	  <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+	  <PackageReference Include="Xamarin.Google.ARCore">
+	    <Version>1.29.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+</Project>
