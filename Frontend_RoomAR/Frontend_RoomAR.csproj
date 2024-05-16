@@ -58,19 +58,27 @@
 	  <None Remove="Resources\Fonts\Inter-SemiBold.ttf" />
 	  <None Remove="Resources\Fonts\Inter-Thin.ttf" />
 	  <None Remove="Resources\Images\augmented_reality_icon.png" />
+	  <None Remove="Resources\Images\background_blur.jpg" />
 	  <None Remove="Resources\Images\cart_icon.png" />
-	  <None Remove="Resources\Images\chair_design1.jpg" />
 	  <None Remove="Resources\Images\chair_logo_icon.png" />
-	  <None Remove="Resources\Images\chair_wooden1.jpg" />
 	  <None Remove="Resources\Images\close_icon.png" />
 	  <None Remove="Resources\Images\filter_icon.png" />
+	  <None Remove="Resources\Images\furniture\backview_leathercouch.png" />
+	  <None Remove="Resources\Images\furniture\backview_officechair.png" />
+	  <None Remove="Resources\Images\furniture\backview_woodenbed.png" />
+	  <None Remove="Resources\Images\furniture\bottomview_woodenbed.png" />
+	  <None Remove="Resources\Images\furniture\couch_backview.png" />
+	  <None Remove="Resources\Images\furniture\couch_frontview.png" />
+	  <None Remove="Resources\Images\furniture\frontview_leatherchair.png" />
+	  <None Remove="Resources\Images\furniture\frontview_leathercouch.png" />
+	  <None Remove="Resources\Images\furniture\frontview_officechair.png" />
+	  <None Remove="Resources\Images\furniture\frontview_woodenbed.png" />
 	  <None Remove="Resources\Images\home_icon.png" />
 	  <None Remove="Resources\Images\left_arrow_icon.png" />
 	  <None Remove="Resources\Images\minus_icon.png" />
 	  <None Remove="Resources\Images\plus_icon.png" />
 	  <None Remove="Resources\Images\profile_icon.png" />
 	  <None Remove="Resources\Images\search_icon.png" />
-	  <None Remove="Resources\Images\sofa1.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -111,6 +119,19 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\ContentViews\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\furniture\backview_leathercouch.png" />
+	  <MauiImage Include="Resources\Images\furniture\backview_officechair.png" />
+	  <MauiImage Include="Resources\Images\furniture\backview_woodenbed.png" />
+	  <MauiImage Include="Resources\Images\furniture\bottomview_woodenbed.png" />
+	  <MauiImage Include="Resources\Images\furniture\couch_backview.png" />
+	  <MauiImage Include="Resources\Images\furniture\couch_frontview.png" />
+	  <MauiImage Include="Resources\Images\furniture\frontview_leatherchair.png" />
+	  <MauiImage Include="Resources\Images\furniture\frontview_leathercouch.png" />
+	  <MauiImage Include="Resources\Images\furniture\frontview_officechair.png" />
+	  <MauiImage Include="Resources\Images\furniture\frontview_woodenbed.png" />
 	</ItemGroup>
 
 	<ItemGroup>

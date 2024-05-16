@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Frontend_RoomAR.ApplicationData;
 
-public class Category
+public partial class Category
 {
-    [JsonPropertyName("categoryId")]
     public int CategoryId { get; set; }
-    [JsonPropertyName("name")]
+
     public string Name { get; set; }
+
+    public virtual ICollection<Furniture> Furnitures { get; set; } = new List<Furniture>();
 }

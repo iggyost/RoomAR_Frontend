@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace Frontend_RoomAR.ApplicationData;
+
 public partial class Color
 {
     public int ColorId { get; set; }

@@ -1,3 +1,7 @@
+using Frontend_RoomAR.ApplicationData;
+using Newtonsoft.Json;
+using System.Text.Json;
+
 namespace Frontend_RoomAR.Views.ContentPages;
 
 public partial class ModelViewPage : ContentPage
@@ -5,11 +9,27 @@ public partial class ModelViewPage : ContentPage
 	public ModelViewPage()
 	{
 		InitializeComponent();
-		webViewModel.Source = "https://sketchfab.com/models/33a982d268d749ddb803263ea7da84b0/embed?autostart=1&internal=1&tracking=0&ui_infos=0&ui_snapshots=1&ui_stop=0&ui_watermark=0";
     }
 
     private async void backBtn_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//Home");
+        await Navigation.PopModalAsync();
+    }
+
+    private async void ContentPage_Loaded(object sender, EventArgs e)
+    {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage response = await client.GetAsync($"{App.conString}furnituresmodel/get/{App.selectedFurniture}");
+        if (response.IsSuccessStatusCode)
+        {
+            string content = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<FurnituresModel>(content);
+            webViewModel.Source = data.Model;
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            await DisplayAlert("3D модель для данной мебели не найдена!", "Для данной мебели отсутствует 3D модель", "OK");
+            await Navigation.PopModalAsync();
+        }
     }
 }

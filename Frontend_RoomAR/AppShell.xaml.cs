@@ -7,9 +7,6 @@ namespace Frontend_RoomAR
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("Auth", typeof(AuthenticationPage));
-            Routing.RegisterRoute("Home", typeof(HomePage));
-            Routing.RegisterRoute("Furniture", typeof(FurniturePage));
         }
     }
 }

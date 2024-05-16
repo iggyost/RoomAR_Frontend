@@ -1,4 +1,5 @@
 using Frontend_RoomAR.ApplicationData;
+using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -86,7 +87,7 @@ public partial class FurniturePage : ContentPage
         if (responsePhotos.IsSuccessStatusCode)
         {
             string content = await responsePhotos.Content.ReadAsStringAsync();
-            var data = JsonSerializer.Deserialize<Photo[]>(content);
+            var data = JsonConvert.DeserializeObject<Photo[]>(content);
             furnitureImagesCv.ItemsSource = data.ToList();
         }
         HttpResponseMessage responseFurnData = await client.GetAsync($"{App.conString}furnitures/selected/" + App.selectedFurniture);
@@ -94,7 +95,7 @@ public partial class FurniturePage : ContentPage
         if (responseFurnData.IsSuccessStatusCode)
         {
             string content = await responseFurnData.Content.ReadAsStringAsync();
-            var data = JsonSerializer.Deserialize<Furniture[]>(content);
+            var data = JsonConvert.DeserializeObject<Furniture[]>(content);
 
             mainPhoto.Source = data.Select(x => x.CoverPhoto).FirstOrDefault();
 
@@ -104,11 +105,11 @@ public partial class FurniturePage : ContentPage
             costLbl.Text = costFormat;
             descriptionLbl.Text = data.Select(x => x.Description).FirstOrDefault();
 
-            lengthLbl.Text = data.Select(x => x.Length).FirstOrDefault().ToString();
-            widthLbl.Text = data.Select(x => x.Width).FirstOrDefault().ToString();
-            heightLbl.Text = data.Select(x => x.Height).FirstOrDefault().ToString();
+            lengthLbl.Text = data.Select(x => x.Length).FirstOrDefault().ToString() + "см";
+            widthLbl.Text = data.Select(x => x.Width).FirstOrDefault().ToString() + "см";
+            heightLbl.Text = data.Select(x => x.Height).FirstOrDefault().ToString() + "см";
 
-            weightLbl.Text = data.Select(x => x.Weight).FirstOrDefault().ToString();
+            weightLbl.Text = data.Select(x => x.Weight).FirstOrDefault().ToString() + "кг";
         }
     }
 
