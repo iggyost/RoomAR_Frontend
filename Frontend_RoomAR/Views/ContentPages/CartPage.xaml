@@ -123,5 +123,14 @@
                 </RefreshView>
             </Grid>
         </Grid>
+        <Button VerticalOptions="End"
+                HorizontalOptions="Center"
+                Margin="16"
+                Text="Оформить"
+                FontFamily="Inter-Medium"
+                BackgroundColor="Black"
+                Padding="64,12"
+                x:Name="requestButton"
+                Clicked="requestButton_Clicked"></Button>
     </Grid>
 </ContentPage>

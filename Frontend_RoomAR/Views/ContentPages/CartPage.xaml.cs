@@ -154,4 +154,15 @@ public partial class CartPage : ContentPage
             await DisplayAlert("Ошибка!", "Не удалось обновить корзину", "Закрыть");
         }
     }
+
+    private async void requestButton_Clicked(object sender, EventArgs e)
+    {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage response = await client.GetAsync($"{App.conString}furniturescarts/delete/all/{App.enteredUserCartId}");
+        if (response.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Заявка оформлена", "В ближайшее время с вами свяжется сотрудник по номеру телефона, для подтверждения и уточнения деталей заказа", "ОК");
+            cartCv.ItemsSource = null;
+        }
+    }
 }
