@@ -90,10 +90,10 @@
                            x:Name="nameLbl"
                            FontFamily="Inter-SemiBold"
                            FontSize="24"></Label>
-                    <Label Text="{Binding Cost}"
+                    <!--<Label Text="{Binding Cost}"
                            x:Name="costLbl"
                            FontFamily="Inter-SemiBold"
-                           FontSize="24"></Label>
+                           FontSize="24"></Label>-->
                     <Label Text="Описание"
                            FontSize="20"
                            FontFamily="Inter-Medium"
@@ -180,7 +180,7 @@
                 <ColumnDefinition Width="16"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Text="В КОРЗИНУ"
+            <Button Text="В ИЗБРАННОЕ"
                     CharacterSpacing="2"
                     FontFamily="Inter-Bold"
                     Background="Black"
@@ -192,7 +192,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="48"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Text="-"
+                <!--<Button Text="-"
                         FontSize="16"
                         FontFamily="Inter-Bold"
                         Background="Black"
@@ -210,7 +210,7 @@
                         FontSize="16"
                         Background="Black"
                         x:Name="increaseBtn"
-                        Clicked="increaseBtn_Clicked"></Button>
+                        Clicked="increaseBtn_Clicked"></Button>-->
             </Grid>
         </Grid>
     </Grid>

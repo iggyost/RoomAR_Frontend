@@ -76,6 +76,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Center">Введите имя*</Label>
                         <Entry Placeholder="Имя пользователя"
+                               PlaceholderColor="Gray"
                        x:Name="nameEntry"
                        Completed="nameEntry_Completed"
                        TextChanged="nameEntry_TextChanged"
@@ -95,6 +96,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Center">Введите фамилию*</Label>
                         <Entry Placeholder="Фамилия пользователя"
+                               PlaceholderColor="Gray"
                        x:Name="surnameEntry"
                        Completed="surnameEntry_Completed"
                        TextChanged="surnameEntry_TextChanged"
@@ -114,6 +116,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Center">Введите email</Label>
                         <Entry Placeholder="Email"
+                               PlaceholderColor="Gray"
                        x:Name="emailEntry"
                        Completed="emailEntry_Completed"
                        TextChanged="emailEntry_TextChanged"
@@ -133,6 +136,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Center">Введите пароль*</Label>
                         <Entry Placeholder="Пароль"
+                               PlaceholderColor="Gray"
                        x:Name="passwordEntry"
                        Completed="passwordEntry_Completed"
                        TextChanged="passwordEntry_TextChanged"
@@ -143,6 +147,7 @@
                        HorizontalTextAlignment="Center"
                        VerticalOptions="Center"></Entry>
                         <Entry Placeholder="Подтвердите пароль"
+                               PlaceholderColor="Gray"
                        x:Name="passwordCompleteEntry"
                        Completed="passwordCompleteEntry_Completed"
                        TextChanged="passwordCompleteEntry_TextChanged"

@@ -15,24 +15,24 @@ public partial class FurniturePage : ContentPage
 
     }
 
-    private void decreaseBtn_Clicked(object sender, EventArgs e)
-    {
-        if (int.Parse(countLabel.Text) == 0)
-        {
+    //private void decreaseBtn_Clicked(object sender, EventArgs e)
+    //{
+    //    if (int.Parse(countLabel.Text) == 0)
+    //    {
 
-        }
-        else
-        {
-            countLabel.Text = Convert.ToString(int.Parse(countLabel.Text) - 1);
-            countFurn = int.Parse(countLabel.Text);
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        countLabel.Text = Convert.ToString(int.Parse(countLabel.Text) - 1);
+    //        countFurn = int.Parse(countLabel.Text);
+    //    }
+    //}
 
-    private void increaseBtn_Clicked(object sender, EventArgs e)
-    {
-        countLabel.Text = Convert.ToString(int.Parse(countLabel.Text) + 1);
-        countFurn = int.Parse(countLabel.Text);
-    }
+    //private void increaseBtn_Clicked(object sender, EventArgs e)
+    //{
+    //    countLabel.Text = Convert.ToString(int.Parse(countLabel.Text) + 1);
+    //    countFurn = int.Parse(countLabel.Text);
+    //}
 
     private async void addToCartBtn_Clicked(object sender, EventArgs e)
     {
@@ -40,36 +40,31 @@ public partial class FurniturePage : ContentPage
         var responseCheck = await client.GetAsync($"{App.conString}furniturescarts/check/{App.selectedFurniture}/{App.enteredUserCartId}");
         if (responseCheck.IsSuccessStatusCode)
         {
-            if (int.Parse(countLabel.Text) != 0)
-            {
-                FurnituresCart newFurnituresCart = new FurnituresCart()
-                {
-                    FurnitureId = App.selectedFurniture,
-                    CartId = App.enteredUserCartId,
-                    Count = countFurn,
-                };
-                HttpClient postClient = new HttpClient();
-                var postFurniture = await postClient.PostAsJsonAsync($"{App.conString}furniturescarts/addtocart/{newFurnituresCart.FurnitureId}/{newFurnituresCart.CartId}/{newFurnituresCart.Count}", newFurnituresCart);
-                if (postFurniture.IsSuccessStatusCode)
-                {
-                    await DisplayAlert($"Успешно", "Мебель успешно добавлена в корзину", "Закрыть");
-                }
-                else
-                {
-                    await DisplayAlert("Ошибка!", "Ошибка при добавлении мебели в корзину!", "Закрыть");
-                }
 
+            FurnituresCart newFurnituresCart = new FurnituresCart()
+            {
+                FurnitureId = App.selectedFurniture,
+                CartId = App.enteredUserCartId,
+                Count = countFurn,
+            };
+            HttpClient postClient = new HttpClient();
+            var postFurniture = await postClient.PostAsJsonAsync($"{App.conString}furniturescarts/addtocart/{newFurnituresCart.FurnitureId}/{newFurnituresCart.CartId}/{newFurnituresCart.Count}", newFurnituresCart);
+            if (postFurniture.IsSuccessStatusCode)
+            {
+                await DisplayAlert($"Успешно", "Мебель успешно добавлена в избранное", "Закрыть");
             }
             else
             {
-                await DisplayAlert("Ошибка!", "Количество мебели не может быть = 0", "Закрыть");
+                await DisplayAlert("Ошибка!", "Ошибка при добавлении мебели в избранное!", "Закрыть");
             }
+
+
         }
         else
         {
             if (responseCheck.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {
-                await DisplayAlert("Ошибка!", "Этот товар уже есть в корзине!", "Закрыть");
+                await DisplayAlert("Ошибка!", "Этот товар уже есть в избранном!", "Закрыть");
             }
             else
             {
@@ -100,9 +95,9 @@ public partial class FurniturePage : ContentPage
             mainPhoto.Source = data.Select(x => x.CoverPhoto).FirstOrDefault();
 
             nameLbl.Text = data.Select(x => x.Name).FirstOrDefault();
-            costLbl.Text = data.Select(x => x.Cost).FirstOrDefault().ToString();
-            string costFormat = string.Format("{0:F0} руб.", costLbl.Text);
-            costLbl.Text = costFormat;
+            //costLbl.Text = data.Select(x => x.Cost).FirstOrDefault().ToString();
+            //string costFormat = string.Format("{0:F0} руб.", costLbl.Text);
+            //costLbl.Text = costFormat;
             descriptionLbl.Text = data.Select(x => x.Description).FirstOrDefault();
 
             lengthLbl.Text = data.Select(x => x.Length).FirstOrDefault().ToString() + "см";

@@ -62,6 +62,7 @@
 	  <None Remove="Resources\Images\cart_icon.png" />
 	  <None Remove="Resources\Images\chair_logo_icon.png" />
 	  <None Remove="Resources\Images\close_icon.png" />
+	  <None Remove="Resources\Images\favorite_icon.png" />
 	  <None Remove="Resources\Images\filter_icon.png" />
 	  <None Remove="Resources\Images\furniture\backview_leathercouch.png" />
 	  <None Remove="Resources\Images\furniture\backview_officechair.png" />

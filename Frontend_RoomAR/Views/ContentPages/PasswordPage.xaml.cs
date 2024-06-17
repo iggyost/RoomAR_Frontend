@@ -13,6 +13,7 @@ public partial class PasswordPage : ContentPage
 
     private async void passwordEntry_Completed(object sender, EventArgs e)
     {
+        passwordEntry.IsEnabled = false;
         HttpClient client = new HttpClient();
 
         HttpResponseMessage response = await client.GetAsync($"{App.conString}users/login/{App.authPhone}/{passwordEntry.Text}");
@@ -28,6 +29,7 @@ public partial class PasswordPage : ContentPage
         {
             errorLabel.Text = "Неверный пароль!";
         }
+        passwordEntry.IsEnabled = true;
     }
 
     private void passwordEntry_TextChanged(object sender, TextChangedEventArgs e)

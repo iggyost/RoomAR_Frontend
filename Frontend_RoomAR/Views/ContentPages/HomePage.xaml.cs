@@ -13,6 +13,8 @@ public partial class HomePage : ContentPage
     {
         InitializeComponent();
     }
+    public static List<Furniture> furnituresList = new List<Furniture>();
+    public static int currentCategoryId = 0;
     private async void LoadCategoriesData()
     {
         try
@@ -32,6 +34,17 @@ public partial class HomePage : ContentPage
 
         }
     }
+    public async Task GetAllFurnitures()
+    {
+        HttpClient client = new HttpClient();
+        HttpResponseMessage response = await client.GetAsync($"{App.conString}furnitures/get/all");
+
+        if (response.IsSuccessStatusCode)
+        {
+            string content = await response.Content.ReadAsStringAsync();
+            furnituresList = JsonConvert.DeserializeObject<Furniture[]>(content).ToList();
+        }
+    }
     private void categoriesCv_Loaded(object sender, EventArgs e)
     {
 
@@ -44,16 +57,18 @@ public partial class HomePage : ContentPage
         {
             RadioButton radioButton = sender as RadioButton;
             var btnId = int.Parse(radioButton.AutomationId);
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync($"{App.conString}furnitures/{btnId}");
+            currentCategoryId = btnId;
+            //HttpClient client = new HttpClient();
+            //HttpResponseMessage response = await client.GetAsync($"{App.conString}furnitures/{btnId}");
 
-            if (response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<Furniture[]>(content);
-                furnituresCv.ItemsSource = data.ToList();
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    string content = await response.Content.ReadAsStringAsync();
+            //    var data = JsonConvert.DeserializeObject<Furniture[]>(content);
+            //    furnituresCv.ItemsSource = data.ToList();
 
-            }
+            //}
+            furnituresCv.ItemsSource = furnituresList.Where(x => x.CategoryId == btnId).ToList();
         }
         catch (Exception)
         {
@@ -70,7 +85,22 @@ public partial class HomePage : ContentPage
 
     private void searchField_Completed(object sender, EventArgs e)
     {
+        try
+        {
+            if (searchField.Text.Length > 0)
+            {
+                var currentFurnituresCategoryList = furnituresList.Where(x => x.CategoryId == currentCategoryId).ToList();
+                furnituresCv.ItemsSource = currentFurnituresCategoryList.Where(x => x.Name.Contains(searchField.Text)).ToList();
+            }
+            else
+            {
+                furnituresCv.ItemsSource = furnituresList.Where(x => x.CategoryId == currentCategoryId).ToList();
+            }
+        }
+        catch (Exception)
+        {
 
+        }
     }
 
     private async void FurnitureItemGesture_Tapped(object sender, EventArgs e)
@@ -92,6 +122,7 @@ public partial class HomePage : ContentPage
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {
         LoadCategoriesData();
+        await GetAllFurnitures();
         HttpClient clientCart = new HttpClient();
         var responseCart = await clientCart.GetAsync($"{App.conString}carts/get/{App.enteredUser.UserId}");
         if (responseCart.IsSuccessStatusCode)

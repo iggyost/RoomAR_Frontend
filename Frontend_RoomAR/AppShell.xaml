@@ -19,11 +19,11 @@
                               Route="Home"
                               Icon="home_icon.png"></ShellContent>
             </Tab>
-            <Tab Icon="cart_icon.png"
-                 Title="Корзина">
+            <Tab Icon="favorite_icon.png"
+                 Title="Избранное">
                 <ShellContent ContentTemplate="{DataTemplate local:CartPage}"
                               Route="Cart"
-                              Icon="cart_icon.png"></ShellContent>
+                              Icon="favorite_icon.png"></ShellContent>
             </Tab>
             <Tab Icon="profile_icon.png"
                  Title="Профиль">

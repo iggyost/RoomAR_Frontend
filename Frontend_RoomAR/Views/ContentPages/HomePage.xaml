@@ -70,7 +70,7 @@
                            Completed="searchField_Completed"></Entry>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1"
+                <!--<Border Grid.Column="1"
                     StrokeThickness="0"
                     Background="White"
                     StrokeShape="RoundRectangle 10">
@@ -83,7 +83,7 @@
                     <ImageButton Source="filter_icon.png"
                              WidthRequest="32"
                              HeightRequest="32"></ImageButton>
-                </Border>
+                </Border>-->
             </Grid>
             <Grid Grid.Row="2">
                 <ScrollView Orientation="Vertical">
@@ -141,10 +141,10 @@
                                                 <Label FontSize="16"
                                                    Text="{Binding Name}"
                                                        FontFamily="Inter-Medium"
-                                                   LineBreakMode="TailTruncation"></Label>
-                                                <Label TextColor="#2F2F2F"
+                                                   LineBreakMode="WordWrap"></Label>
+                                                <!--<Label TextColor="#2F2F2F"
                                                    FontSize="14"
-                                                   Text="{Binding Cost, StringFormat='{}{0:### ###} руб.'}"></Label>
+                                                   Text="{Binding Cost, StringFormat='{}{0:### ###} руб.'}"></Label>-->
                                             </StackLayout>
                                         </Grid>
                                     </Border>

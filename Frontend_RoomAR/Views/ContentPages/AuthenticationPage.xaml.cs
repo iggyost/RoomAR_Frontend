@@ -19,6 +19,7 @@ public partial class AuthenticationPage : ContentPage
 
     private async void phoneEntry_Completed(object sender, EventArgs e)
     {
+        phoneEntry.IsEnabled = false;
         var regex = new Regex("^((\\+7|7|8)+([0-9]){10})$");
         if (regex.IsMatch(phoneEntry.Text))
         {
@@ -41,6 +42,7 @@ public partial class AuthenticationPage : ContentPage
         {
             errorLabel.Text = "Неправильный формат номера!";
         }
+        phoneEntry.IsEnabled = true;
     }
 
     private void ContentPage_Loaded(object sender, EventArgs e)

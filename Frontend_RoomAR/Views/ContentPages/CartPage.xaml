@@ -14,7 +14,7 @@
                 <RowDefinition Height="48"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Label FontSize="32">Моя корзина</Label>
+            <Label FontSize="32">Избранное</Label>
             <Grid Grid.Row="2">
                 <RefreshView x:Name="refreshCart"
                          Refreshing="refreshCart_Refreshing">
@@ -61,7 +61,7 @@
                                                        FontFamily="Inter-SemiBold"
                                                        LineBreakMode="TailTruncation"
                                                        Text="{Binding Name}"></Label>
-                                                    <Border StrokeThickness="0"
+                                                    <!--<Border StrokeThickness="0"
                                                         Background="LightGray"
                                                         StrokeShape="RoundRectangle 40"
                                                         HeightRequest="24"
@@ -73,7 +73,7 @@
                                                                 <ColumnDefinition></ColumnDefinition>
                                                                 <ColumnDefinition></ColumnDefinition>
                                                             </Grid.ColumnDefinitions>
-                                                            <Border Background="Gray"
+                                                            --><!--<Border Background="Gray"
                                                                 StrokeShape="RoundRectangle 40"
                                                                 WidthRequest="24"
                                                                 HorizontalOptions="Start">
@@ -100,17 +100,17 @@
                                                                          Aspect="AspectFill"
                                                                          Margin="6"
                                                                          Clicked="counterPlusBtn_Clicked"></ImageButton>
-                                                            </Border>
+                                                            </Border>--><!--
                                                         </Grid>
-                                                    </Border>
+                                                    </Border>-->
                                                 </VerticalStackLayout>
-                                                <Label Grid.Column="1"
+                                                <!--<Label Grid.Column="1"
                                                    VerticalOptions="Center"
                                                    HorizontalOptions="Center"
                                                    FontSize="16"
                                                    FontFamily="Inter-SemiBold"
                                                    LineBreakMode="TailTruncation"
-                                                   Text="{Binding TotalCost, StringFormat='{0:F0} руб.'}"></Label>
+                                                   Text="{Binding TotalCost, StringFormat='{0:F0} руб.'}"></Label>-->
                                             </Grid>
                                         </Grid>
                                     </Border>
@@ -123,7 +123,7 @@
                 </RefreshView>
             </Grid>
         </Grid>
-        <Button VerticalOptions="End"
+        <!--<Button VerticalOptions="End"
                 HorizontalOptions="Center"
                 Margin="16"
                 Text="Оформить"
@@ -131,6 +131,6 @@
                 BackgroundColor="Black"
                 Padding="64,12"
                 x:Name="requestButton"
-                Clicked="requestButton_Clicked"></Button>
+                Clicked="requestButton_Clicked"></Button>-->
     </Grid>
 </ContentPage>
